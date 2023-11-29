@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -9,13 +9,19 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductsComponent } from './products/products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
+import { CartComponent } from './cart/cart.component';
+import { CartItemsComponent } from './components/cart-items/cart-items.component';
+import { CartCheckoutComponent } from './components/cart-checkout/cart-checkout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ProductsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    CartComponent,
+    CartItemsComponent,
+    CartCheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +31,7 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
     BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule { }

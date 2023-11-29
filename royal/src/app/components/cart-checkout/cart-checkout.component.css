@@ -1,0 +1,37 @@
+.payment-wrapper {
+    text-align: center;
+    padding: 40px;
+}
+
+.payment-wrapper .card-number {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: #C1BFBF;
+    justify-content: center;
+}
+
+.total-price {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.checkout {
+    margin-top: 20px;
+}
+
+.checkout button {
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #64C5AE;
+    background-color: white;
+    color: #64C5AE;
+}
+
+.checkout button:hover {
+    background-color: #64C5AE;
+    color: white;
+}

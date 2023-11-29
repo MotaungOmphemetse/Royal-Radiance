@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
 import { Router } from '@angular/router';
+import { MessagerService } from '../services/messager.service';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +13,7 @@ export class ProductsComponent {
 
   products: Product[] = [];
 
-    constructor(private productService: ProductService, private router: Router) { }
+    constructor(private productService: ProductService, private router: Router, private msg: MessagerService) { }
 
 
   ngOnInit(): void {
@@ -42,7 +43,9 @@ export class ProductsComponent {
   }
   
 
-
+  handleAddToCart(): void {
+    this.msg.sendMessage(this.products)
+  }
   
 
 }

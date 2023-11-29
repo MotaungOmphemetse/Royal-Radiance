@@ -1,0 +1,101 @@
+.alert-warning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-container {
+    margin: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 93%;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+}
+
+.product {
+    width: 100%;
+}
+
+.product a {
+    color: black;
+    text-decoration: none;
+}
+
+.product a span {
+    margin-left: 10px;
+}
+
+.cart-wrapper {
+    display: flex;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.cart-container .cart {
+    width: 65%;
+    padding: 20px;
+}
+
+.cart-container .payment {
+    width: 35%;
+    background-color: #C1BFBF;
+}
+
+.wrapper {
+    margin-top: 30px;
+}
+
+.wrapper h1 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.cart-detail {
+    width: 100%;
+}
+
+.payment {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 20px;
+}
+
+.payment-wrapper {
+    text-align: center;
+    padding: 40px;
+}
+
+.payment-wrapper .card-number {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    background-color: #C1BFBF;
+    justify-content: center;
+}
+
+.total-price {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.checkout {
+    margin-top: 20px;
+}
+
+.checkout button {
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #64C5AE;
+    background-color: white;
+    color: #64C5AE;
+}
+
+.checkout button:hover {
+    background-color: #64C5AE;
+    color: white;
+}
