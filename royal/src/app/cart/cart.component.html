@@ -1,4 +1,8 @@
-<div *ngIf="cartItems.length === 0" class="alert-warning">Your cart is empty</div>
+<div *ngIf="cartItems.length === 0" class="alert-warning">
+    <span class="container">
+        <h2>you cart is empty.</h2>
+    </span>
+</div>
 
 <div *ngIf="cartItems.length > 0" class="cart-container">
     <div class="product">

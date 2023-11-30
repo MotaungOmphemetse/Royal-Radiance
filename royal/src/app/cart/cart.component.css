@@ -1,7 +1,23 @@
 .alert-warning {
+    margin: 0;
+    height: 100vh; /* Set the height of the body to the viewport height */
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Center horizontally */
+    align-items: center; 
+}
+
+.alert-warning .container {
+    padding-top: 60px;
+    text-align: center;
+    width: 50%;
+    height: 20vh;
+    background-color: #F4F5F5;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 10px;
+}
+
+.alert-warning .container h2 {
+    font-size: 20px;
 }
 
 .cart-container {
