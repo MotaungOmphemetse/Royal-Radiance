@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Userservice } from '../get-single-user.service';
-import { User } from '../user/user.component';
+//import { User } from '../user/user.component';
 
 @Component({
   selector: 'app-edit',

@@ -3,7 +3,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, tap, throwIfEmpty } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { UserData } from './user/user';
-import { User } from './user/user.component';
 
 
 @Injectable({
@@ -23,11 +22,11 @@ export class Userservice {
 
 
 
-  getUsers(): Observable<User[]> {
-    return this.http.get<User[]>(this.productURL).pipe(
-      tap((_) => this.log('fetched users')), // Updated log message
+  //getUsers(): Observable<User[]> {
+   // return this.http.get<User[]>(this.productURL).pipe(
+   //   tap((_) => this.log('fetched users')), // Updated log message
       
-    );
+   // );
   }
 
-}
+//}
