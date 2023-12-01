@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Product } from '../interface/product';
 import { ProductService } from '../services/product.service';
+import { MessagerService } from '../services/messager.service.service';
+import { CartService } from '../services/cart.service'; 
 
 @Component({
   selector: 'app-product-detail',
@@ -16,6 +18,8 @@ export class ProductDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
+    private msg: MessagerService,
+    private cartService: CartService,
   ) { this.route.params.subscribe(params => {
     const productId = +params['id']; // Convert to a number
     this.fetchProductDetails(productId);
@@ -48,7 +52,12 @@ export class ProductDetailComponent implements OnInit {
     });
   }
 
-
+  // Add product to cart
+  handleAddToCart(): void {
+    this.cartService.addProductToCart(this.product).subscribe(() => {
+      this.msg.sendMessage(this.product)
+    })
+  }
 
 
 

@@ -1,31 +1,47 @@
 import { Component, OnInit } from '@angular/core';
 import { MessagerService } from '../services/messager.service.service';
+import { Product } from '../interface/product';
+import { CartService } from '../services/cart.service';
+import { Cart } from '../interface/cart';
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
-export class CartComponent implements OnInit{
+export class CartComponent implements OnInit {
+  cartItems: Cart[] = [];
+  cartTotal = 0;
 
-  cartItems = [
-    {id: 1, productId: 2, productName: "ABC", image: "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg", price: 2000}
-  ]; // Assuming cartItems is an array of items
-  cartTotal = 2000;
-
-  constructor(private  msg: MessagerService) {}
+  constructor(
+    private msg: MessagerService,
+    private cartService: CartService
+  ) {}
 
   ngOnInit() {
+    this.handleSubscription();
+    this.loadCartItems(); 
+  }
 
-    this.msg.getMessages().subscribe(products => {
-      // Assuming product is an item you want to add to cartItems
-      console.log(products);
-      // this.cartItems.push(product);
+  handleSubscription() {
+    this.msg.getMessages().subscribe((product: Product) => {
+      this.loadCartItems();
+    });
+  }
 
-      // this.cartItems.forEach(item => {
-      //   this.cartTotal += (item.qty * item.price)
-      // });
-    })
+  loadCartItems() {
+    this.cartService.getcartItems().subscribe((items: Cart[]) => {
+      this.cartItems = items;
+      console.log("fuck: ",items);
+      this.calculateCartTotal();
+    });
+  }
+
+  // Calculate
+  calculateCartTotal() {
+    this.cartTotal = 0;
+    this.cartItems.forEach((item) => {
+      this.cartTotal += item.qty * item.price;
+    });
   }
 }
-

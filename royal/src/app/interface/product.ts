@@ -1,5 +1,6 @@
 export interface Product{
     id: number;
+    productId: number;
     title: string;
     description: string;
     price: number;
@@ -10,4 +11,5 @@ export interface Product{
     category: string,
     thumbnail: string, // Assuming thumbnail is a string URL or file path
     images: string[];
+    qty: number;
 }
