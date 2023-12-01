@@ -32,7 +32,7 @@ export class CartComponent implements OnInit {
   loadCartItems() {
     this.cartService.getcartItems().subscribe((items: Cart[]) => {
       this.cartItems = items;
-      console.log("fuck: ",items);
+      console.log(this.cartItems)
       this.calculateCartTotal();
     });
   }
