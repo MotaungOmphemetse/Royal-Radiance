@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Userservice } from '../get-single-user.service';
 import { UserData } from './user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -8,10 +9,11 @@ import { UserData } from './user';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
-  ;
 
   
-  
-  
-  constructor() {}
+  constructor(private router: Router) {}
+
+  gotoEditProfile(){
+    this.router.navigate(['../edit'])
+  }
 }
