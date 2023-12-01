@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent {
-
   
+
   constructor(private router: Router) {}
 
-  gotoEditProfile(){
-    this.router.navigate(['../edit'])
+  gotoEditProfile() {
+    this.router.navigate(['../edit']);
   }
 }

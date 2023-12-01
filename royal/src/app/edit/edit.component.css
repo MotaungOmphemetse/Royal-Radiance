@@ -10,7 +10,7 @@
 .Profile {
   margin-left: 0%;
   margin-right: 30%;
-  font-family: Georgia, "Times New Roman", Times, serif;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: black;
   font-weight: bolder;
   font-size: large;
@@ -49,7 +49,6 @@
   padding: 5%;
   margin-bottom: 0%;
 }
-
 
 .text1 {
   font-weight: bold;

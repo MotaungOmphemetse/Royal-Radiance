@@ -13,6 +13,7 @@ export class Userservice {
   private productURL = 'https://fakestoreapi.com/users';
   constructor(private http: HttpClient) {}
 
+ 
   // public getUser(userId: number): Observable<User> {
   //   const url = `${this.productURL}/${userId}`;
   //   console.log(userId);
