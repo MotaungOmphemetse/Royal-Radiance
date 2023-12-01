@@ -5,6 +5,16 @@
   border-radius: 20;
 }
 
+.Profile{
+    margin-left: 0%;
+    margin-right: 30%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    font-weight: bolder;
+    font-size: large;
+}
+
+
 .section {
   display: flex;
 }
@@ -14,7 +24,7 @@
 }
 
 .image1 img {
-  width: 25%;
+  width: 20%;
   margin-left: 65%;
   background: whitesmoke;
   border: none;
@@ -27,6 +37,8 @@
     margin-left: 2%;
     background-color:white;
     border-radius: 2%;
+    margin-top: 0%;
+    margin-bottom: 0%;
 }
 .icon1 {
   margin: 5%;
@@ -97,16 +109,17 @@
 .button1 {
     margin: 20px;
     margin-top:0%;
-    margin-bottom: 10%;
+    margin-bottom: 0%;
     margin-left: 2%;
-    color: #64c5ae;
+    color:white;
     background-color: #64c5ae;
     border: 2px solid whitesmoke;
-    width: 3%;
+    width: 7%;
     height: 5%;
- border-radius: 9%;
+ border-radius: 8%;
     align-items: center;
-    padding: 5px;
+    padding: 10px;
+
     
   }
 .button2 {
@@ -131,4 +144,10 @@
 
 .iconedit{
     margin-left: 4%;
+}
+.routerlink{
+    color:black;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

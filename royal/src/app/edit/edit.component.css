@@ -17,6 +17,8 @@
   margin: 2%;
   gap: 5%;
   padding: 2%;
+  margin-bottom: 0%;
+  margin-top: 0%;
 }
 .icon1 {
   display: flex;
@@ -116,6 +118,7 @@
     color: #101010;
     font-weight: bold;
     transition: 0.3s;
+    padding: 10px;
     
 }
 
