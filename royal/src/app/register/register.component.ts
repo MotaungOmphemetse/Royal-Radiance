@@ -29,6 +29,7 @@ export class RegisterComponent {
   }
 
   register(){
+    
     if (this.formGroup.valid) {
       this.registerService.register(this.formGroup.value).subscribe(result=>{
         if(result.success){
