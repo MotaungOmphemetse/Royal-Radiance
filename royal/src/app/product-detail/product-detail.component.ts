@@ -14,6 +14,7 @@ import { CartService } from '../services/cart.service';
 export class ProductDetailComponent implements OnInit {
 
   product!: Product;
+  public productItem:any;
 
   constructor(
     private route: ActivatedRoute,
@@ -40,24 +41,22 @@ export class ProductDetailComponent implements OnInit {
   getProduct(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
     this.productService.getProduct(id)
-    .subscribe((data: Product | Product[]) => {
+    .subscribe((data: any | any[]) => {
       if (Array.isArray(data)) {
         // Handle array case (multiple products)
         // You might want to assign the first product in the array or handle it differently
-        this.product = data[0];
+        this.productItem = data[0];
       } else {
         // Handle single product case
-        this.product = data;
+        this.productItem = data;
       }
     });
   }
 
   // Add product to cart
-  handleAddToCart(): void {
-    this.cartService.addProductToCart(this.product).subscribe(() => {
-      this.msg.sendMessage(this.product)
-    })
-  }
+  addToCart(product: any) {
+    this.cartService.addToCart(product) 
+}
 
 
 

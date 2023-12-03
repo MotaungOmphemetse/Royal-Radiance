@@ -10,8 +10,9 @@ import { Cart } from '../interface/cart';
   styleUrls: ['./cart.component.css'],
 })
 export class CartComponent implements OnInit {
-  cartItems: Cart[] = [];
-  cartTotal = 0;
+
+  public products: any = []
+  public grandTotal!: number;
 
   constructor(
     private msg: MessagerService,
@@ -19,29 +20,18 @@ export class CartComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.handleSubscription();
-    this.loadCartItems(); 
+    this.cartService.getProducts()
+    .subscribe(res => {
+      this.products = res;
+      this.grandTotal = this.cartService.getTotalPrice(); 
+    }) 
+  }  
+
+  removeItem(item: any) {
+    this.cartService.removeCartItem(item)
   }
 
-  handleSubscription() {
-    this.msg.getMessages().subscribe((product: Product) => {
-      this.loadCartItems();
-    });
-  }
-
-  loadCartItems() {
-    this.cartService.getcartItems().subscribe((items: Cart[]) => {
-      this.cartItems = items;
-      console.log(this.cartItems)
-      this.calculateCartTotal();
-    });
-  }
-
-  // Calculate
-  calculateCartTotal() {
-    this.cartTotal = 0;
-    this.cartItems.forEach((item) => {
-      this.cartTotal += item.qty * item.price;
-    });
+  emptyCart() {
+    this.cartService.removeAllCart()
   }
 }
