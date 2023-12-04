@@ -28,6 +28,9 @@
 .icons-nav a {
     color: black;
 }
+.icons-nav a {
+    text-decoration: none;
+}
 
 .icons-nav a .cart-badge {
     width: 50px;

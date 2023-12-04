@@ -1,19 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 import { Cart } from '../interface/cart';
-import { cartUrl } from '../config/api';
-import { Product } from '../interface/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-
-  public cartItemList: any = [];
-  public productList = new BehaviorSubject<any>([])
+  cartItemList: Cart[] = [];
+  public productList = new BehaviorSubject<any>([]);
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -22,41 +18,56 @@ export class CartService {
   constructor(private http: HttpClient) {}
 
   getProducts() {
+    const storedData = localStorage.getItem('productsInCart');
+  
+    if (storedData) {
+      const products = JSON.parse(storedData) as Cart[];
+      this.productList.next(products);
+    }
+  
     return this.productList.asObservable();
   }
 
-  setProduct(product: any) {
+  setProduct(product: Cart[]) {
     this.cartItemList.push(...product);
     this.productList.next(product);
   }
 
-  addToCart(product: any) {
-     this.cartItemList.push(product);
-     this.productList.next(this.cartItemList);
-     this.getTotalPrice();
-     console.log(this.cartItemList)
+  addToCart(product: Cart) {
+    this.cartItemList.push(product);
+    localStorage.setItem('productsInCart', JSON.stringify(this.cartItemList));
+    this.productList.next(this.cartItemList);
+  
+    const totalPrice = this.getTotalPrice();
+    console.log('Total Price:', totalPrice);
   }
 
-  getTotalPrice() : number{
-    let grandTotal = 0;
-    this.cartItemList.forEach((a:any)=>{
-      grandTotal += a?.total;
-    })
+  getTotalPrice(): number {
+    let grandTotal: number = 0;
+    this.cartItemList.forEach((item: Cart) => {
+      grandTotal += item.total;
+    });
     return grandTotal;
   }
 
-  removeCartItem(product: any) {
-    this.cartItemList.map((a:any, index: any) => {
-      if (product.id === a.id) { 
-        this.cartItemList.splice(index, 1)
-      }
-    })
-    this.productList.next(this.cartItemList)
-  } 
+  removeCartItem(product: Cart) {
+    const storedData = localStorage.getItem('productsInCart');
+    const products = storedData ? JSON.parse(storedData) as Cart[] : [];
+  
+    if (products) {
+      const updatedProducts = products.filter((p: Cart) => p.id !== product.id);
+  
+      const updatedData = JSON.stringify(updatedProducts);
+      localStorage.setItem('productsInCart', updatedData); 
+  
+      this.cartItemList = updatedProducts;
+      this.productList.next(this.cartItemList);
+    }
+  }
 
   removeAllCart() {
-    this.cartItemList = []
-    this.productList.next(this.cartItemList)
+    this.cartItemList = [];
+    this.productList.next(this.cartItemList);
+    localStorage.removeItem('productsInCart');
   }
-   
 }

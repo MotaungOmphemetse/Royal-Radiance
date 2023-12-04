@@ -59,7 +59,8 @@
     <div class="row">
       <div class="col-md-3" *ngFor="let product of productList">
 
-        <div class="card h-100" (click)="navigateProductDetails(product.id)">
+        <div class="card h-100" >
+          <div (click)="navigateProductDetails(product.id)">
           <div class="card-img-wrapper scale-on-hover">
             <img src={{product.image}} alt="" class="card-img-top img-fluid">
           </div>
@@ -70,6 +71,7 @@
             <p class="card-price">R {{ (product.price * 16.81).toLocaleString('en-ZA', { minimumFractionDigits: 2,
               maximumFractionDigits: 2 }) }}</p>
           </div>
+        </div>
    
           <button (click)="addToCart(product)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
               class="bi bi-cart-plus" viewBox="0 0 16 16">
